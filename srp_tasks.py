@@ -50,7 +50,6 @@ class Task:
     def __str__(self): 
         status = "✓" if self.completed else " " 
         due = f" (Due: {self.due_date})" if self.due_date else "" 
-        # 2.2 แสดงผล priority ใน __str__
         return f"[{status}] {self.id}. {self.description} [Priority: {self.priority}]{due}" 
 
 class TaskManager: 
@@ -60,7 +59,6 @@ class TaskManager:
         self.next_id = max([t.id for t in self.tasks] + [0]) + 1 if self.tasks else 1
         print(f"Loaded {len(self.tasks)} tasks. Next ID: {self.next_id}")
 
-    # 2.3 รับค่า priority ใน add_task
     def add_task(self, description, due_date=None, priority="medium"): 
         task = Task(self.next_id, description, due_date, priority=priority) 
         self.tasks.append(task) 
